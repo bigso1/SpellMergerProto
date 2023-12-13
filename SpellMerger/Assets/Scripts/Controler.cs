@@ -10,6 +10,7 @@ public class Controler : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRange;
     public LayerMask jumpLayers;
+    public LayerMask platformsMask;
     [SerializeField] private float jumpForce;
     
     private float dirLook;
@@ -21,8 +22,8 @@ public class Controler : MonoBehaviour
     [Space] [Header("Spells")]
     public float launchForce = 10;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject breathLaunchable;
-    [SerializeField] private GameObject sulfurLaunchable;
+    [SerializeField] private Rigidbody breathLaunchable;
+    [SerializeField] private Rigidbody sulfurLaunchable;
 
     public bool breathUnlocked = false;
 
@@ -37,7 +38,6 @@ public class Controler : MonoBehaviour
     {
         MovePackage();
         JumpPackage();
-
         if (Input.GetMouseButtonDown(0))
         {
             LaunchSpell(sulfurLaunchable);
@@ -58,12 +58,8 @@ public class Controler : MonoBehaviour
         move = transform.right * x;
         transform.position += move.normalized * Time.deltaTime * moveSpeed;
         if(x == 0 && z == 0) move = Vector3.zero;
-
-        if (x > 0) dirLook = 0.65f;
-        if (x < 0) dirLook = -.65f;
-        firePoint.transform.localPosition = new Vector3(dirLook,0 , 0);
-
     }
+    
 //|| !Input.GetKeyDown(KeyCode.Z)) return;
     void JumpPackage()
     {
@@ -72,8 +68,31 @@ public class Controler : MonoBehaviour
             if(!GroundCheck()) return;
             rb.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);  
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if(!GoDown()) return;
+            StartCoroutine(GetDown());
+        }
     }
-    
+
+    public bool GoDown()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(groundCheck.position, new Vector3(0,-.5f,0),out hit, groundCheckRange, platformsMask))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    IEnumerator GetDown()
+    {
+        CapsuleCollider caps = GetComponent<CapsuleCollider>();
+        caps.isTrigger = true;
+        yield return new WaitForSeconds(.5f);
+        caps.isTrigger = false;
+    }
     public bool GroundCheck()
     {
         RaycastHit hit;
@@ -82,21 +101,17 @@ public class Controler : MonoBehaviour
             Debug.Log("jumping");
             return true;
         }
-        else
-        {
-            Debug.Log("not jumping");
-            return false;
-        }
+        Debug.Log("not jumping");
+        return false;
     }
 
-    public void LaunchSpell(GameObject spell)
+    public void LaunchSpell(Rigidbody spell)
     {
-        cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 launchDir = cursorPos - transform.position;
-        Debug.Log(cursorPos);
-        Debug.Log("direction " + launchDir);
-        GameObject spellInstance = Instantiate(spell, firePoint.position, quaternion.identity);
+        var dir = firePoint.GetComponent<firePointScript>().GetDirection();
 
-        spellInstance.GetComponent<Rigidbody>().AddForce(launchDir.normalized * launchForce, ForceMode.Impulse);
+
+        Rigidbody spellInstance = Instantiate(spell, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+
+        spellInstance.AddForce(dir * launchForce, ForceMode.Impulse);
     }
 }
