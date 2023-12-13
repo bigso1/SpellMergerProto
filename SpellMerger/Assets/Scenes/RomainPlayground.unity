@@ -377,7 +377,7 @@ MonoBehaviour:
   platformsMask:
     serializedVersion: 2
     m_Bits: 8
-  jumpForce: 65
+  jumpForce: 85
   moveSpeed: 10
   launchForce: 12
   firePoint: {fileID: 1226954214}
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 632576792}
   m_Layer: 3
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,8 +745,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.6, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.7448804, z: 1}
+  m_Center: {x: 0, y: -0.07244027, z: 0}
 --- !u!114 &996455089
 MonoBehaviour:
   m_ObjectHideFlags: 0
