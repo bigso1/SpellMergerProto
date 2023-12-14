@@ -136,10 +136,16 @@ public class Controler : MonoBehaviour
     public void LaunchSpell(Rigidbody spell)
     {
         var dir = firePoint.GetComponent<firePointScript>().GetDirection();
-
-
-        Rigidbody spellInstance = Instantiate(spell, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-
+        Rigidbody spellInstance = Instantiate(spell, firePoint.position, quaternion.identity);
+        if (!gravityFlipped)
+        {
+            spellInstance.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else
+        {
+            spellInstance.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+        }
+        
         spellInstance.AddForce(dir * launchForce, ForceMode.Impulse);
     }
 }

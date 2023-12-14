@@ -12,7 +12,14 @@ public class SouffleSpell : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     public LayerMask grounds;
     [SerializeField] private Rigidbody rb;
-    
+    public float lifeTime = 5;
+
+
+    private void Start()
+    {
+        StartCoroutine(LifeTime());
+    }
+
     private void OnTriggerStay(Collider other)
     {
         
@@ -30,5 +37,10 @@ public class SouffleSpell : MonoBehaviour
         {
             rb.useGravity = false;
         }
+    }
+
+    IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(lifeTime);
     }
 }
