@@ -8,6 +8,7 @@ public class enmyProjScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Enemy")) return;
+        Destroy(gameObject);
     }
 }
