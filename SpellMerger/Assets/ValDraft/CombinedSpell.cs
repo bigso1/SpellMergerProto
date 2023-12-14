@@ -17,7 +17,7 @@ public class CombinedSpell : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            other.GetComponent<Rigidbody>().AddForce(direction);
+            other.GetComponent<Rigidbody>().AddForce(direction * other.GetComponent<Rigidbody>().mass);
         }
     }
 }
