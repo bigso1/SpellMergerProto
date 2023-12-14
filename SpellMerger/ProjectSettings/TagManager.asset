@@ -4,19 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Sulfur
-  - Souffle
+  - Platform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Platform
   - Water
   - UI
-  - Damage
-  - SpellEffect
-  - 
+  - Player
+  - IgnorePlatforms
+  - InAir
   - 
   - 
   - 
