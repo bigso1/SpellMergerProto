@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3605160350569049257}
   - component: {fileID: 3605160350569049256}
   - component: {fileID: 3605160350569049263}
-  - component: {fileID: 3605160350569049262}
   - component: {fileID: 8979937906473659492}
+  - component: {fileID: -2892292015455728408}
   m_Layer: 0
   m_Name: 'SulfureLaunchable '
   m_TagString: Untagged
@@ -99,21 +99,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3605160350569049262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3605160350569049261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35e9e76a8a406c41b83040db4dc6712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: {fileID: 3237234106857892709, guid: faa7b02f8d4d72146a26e419367bbcb6,
-    type: 3}
-  myLifeTime: 3
 --- !u!54 &8979937906473659492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +115,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
+--- !u!114 &-2892292015455728408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605160350569049261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a4ba5c36b3fd147a7a0ad5b8968c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 3237234106857892709, guid: faa7b02f8d4d72146a26e419367bbcb6,
+    type: 3}
+  myLifeTime: 3

@@ -22,7 +22,6 @@ public class SulfurSpell : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ResetList());
-        StartCoroutine(LifeTime());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,14 +49,13 @@ public class SulfurSpell : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, .5f, grounds))
+        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, .7f, grounds))
         {
             rb.useGravity = false;
         }
+
+        lifeTime -= Time.deltaTime;
+        if(lifeTime<=0) Destroy(gameObject);
     }
     
-    IEnumerator LifeTime()
-    {
-        yield return new WaitForSeconds(lifeTime);
-    }
 }
