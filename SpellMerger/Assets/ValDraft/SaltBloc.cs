@@ -34,6 +34,7 @@ public class SaltBloc : MonoBehaviour
     {
         if (!willDetonate && other.gameObject.CompareTag("Sulfur"))
         {
+            print("sulfurSalt");
             willDetonate = true;
             StartCoroutine(Detonation());
         }
