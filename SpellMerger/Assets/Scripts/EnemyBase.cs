@@ -31,9 +31,13 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    public IEnumerator TakeDamages(int dmg)
+    public void TakeDamages(int dmg)
     {
-        if(!canBeDmged) yield break;
+        if (!canBeDmged) return;
+        StartCoroutine(Damager(dmg));
+    }
+    public IEnumerator Damager(int dmg)
+    {
         canBeDmged = false;
         hp -= dmg;
         GetComponent<MeshRenderer>().material = feedbackMat;
