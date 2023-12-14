@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class CombinedSpell : MonoBehaviour
 {
-    [SerializeField] private int windForce;
-    public bool isUp;
+    [SerializeField] private float windForce;
+    private Vector3 direction;
+
+    private void Start()
+    {
+        direction = new Vector3(0, windForce * -Physics.gravity.y, 0);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            if(isUp) other.GetComponent<Rigidbody>().AddForce(0,windForce,0);
-            else other.GetComponent<Rigidbody>().AddForce(0,-windForce,0);
+            other.GetComponent<Rigidbody>().AddForce(direction);
         }
     }
 }
