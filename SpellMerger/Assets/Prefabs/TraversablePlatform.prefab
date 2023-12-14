@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 448234447575395116}
   - component: {fileID: 3511048808788578483}
   - component: {fileID: 5300135705428690177}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TraversablePlatform
   m_TagString: Platform
   m_Icon: {fileID: 0}

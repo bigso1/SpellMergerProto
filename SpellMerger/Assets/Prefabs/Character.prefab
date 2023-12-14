@@ -339,7 +339,7 @@ MonoBehaviour:
   platformsMask:
     serializedVersion: 2
     m_Bits: 8
-  jumpForce: 70
+  jumpForce: 80
   moveSpeed: 10
   launchForce: 12
   firePoint: {fileID: 3047869457748338105}
