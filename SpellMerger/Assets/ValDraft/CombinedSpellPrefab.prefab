@@ -141,5 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6a9d1f40030924ba00a41d89650041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 12
-  isUp: 1
+  windForce: 5

@@ -58,7 +58,7 @@ public class SulfurSpell : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, .7f, grounds))
+        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, .6f, grounds))
         {
             rb.useGravity = false;
         }
