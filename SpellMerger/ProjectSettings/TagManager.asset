@@ -8,6 +8,8 @@ TagManager:
   - Sulfur
   - Souffle
   - Enemy
+  - UI
+  - MovableItem
   layers:
   - Default
   - TransparentFX
