@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Controler : MonoBehaviour
 {
+
     [Header("Movements")] 
     public bool gravityFlipped;
     [SerializeField] Rigidbody rb;
@@ -32,6 +33,7 @@ public class Controler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      
     }
 
     // Update is called once per frame

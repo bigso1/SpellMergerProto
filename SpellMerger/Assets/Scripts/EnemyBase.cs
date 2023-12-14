@@ -27,13 +27,17 @@ public class EnemyBase : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             //GetComponent<Rigidbody>().AddForce(1000*Vector3.right, ForceMode.Impulse);
-             StartCoroutine(TakeDamages(1));
+             StartCoroutine(Damager(1));
         }
     }
 
-    public IEnumerator TakeDamages(int dmg)
+    public void TakeDamages(int dmg)
     {
-        if(!canBeDmged) yield break;
+        if (!canBeDmged) return;
+        StartCoroutine(Damager(dmg));
+    }
+    public IEnumerator Damager(int dmg)
+    {
         canBeDmged = false;
         hp -= dmg;
         GetComponent<MeshRenderer>().material = feedbackMat;
