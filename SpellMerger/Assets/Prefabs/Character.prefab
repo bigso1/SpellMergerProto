@@ -343,11 +343,11 @@ MonoBehaviour:
   moveSpeed: 10
   launchForce: 12
   firePoint: {fileID: 3047869457748338105}
-  breathLaunchable: {fileID: 906148015995868942, guid: 4f6e765c35e7d07418ce5b167b65041b,
+  breathLaunchable: {fileID: 8979937906473659492, guid: aeb0181072abd284581ea5bb7780adef,
     type: 3}
-  sulfurLaunchable: {fileID: 906148015995868942, guid: 4f6e765c35e7d07418ce5b167b65041b,
+  sulfurLaunchable: {fileID: 8979937906473659492, guid: 8b417ebf45bf9834db64a572ccd6dbdb,
     type: 3}
-  breathUnlocked: 0
+  breathUnlocked: 1
   cursorPos: {x: 0, y: 0, z: 0}
 --- !u!136 &3047869458734975592
 CapsuleCollider:
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 3047869459053101807}
   m_Layer: 6
   m_Name: UpperPlatformCheck
-  m_TagString: Player
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,7 +11,7 @@ public class CheckUp : MonoBehaviour
     {
         if (other.CompareTag("Platform"))
         {
-            parentCollider.isTrigger = true;
+            other.isTrigger = true;
         }
     }
     
@@ -19,7 +19,7 @@ public class CheckUp : MonoBehaviour
     {
         if (other.CompareTag("Platform"))
         {
-            parentCollider.isTrigger = false;
+            other.isTrigger = false;
         }
     }
 }
