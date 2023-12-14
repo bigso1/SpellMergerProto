@@ -29,7 +29,7 @@ public class Controler : MonoBehaviour
     [SerializeField] private Rigidbody sulfurLaunchable;
 
     public bool breathUnlocked = false;
-
+    private Vector3 groundDir = new Vector3(0,-1,0);
 
     private bool sulfurReady = true;
     public float sulfureCd = 1f;
@@ -99,13 +99,17 @@ public class Controler : MonoBehaviour
     {
         if (gravityDir)
         {
+            Debug.Log("i should flip");
             gravityFlipped = true;
-            transform.rotation = Quaternion.Euler(0,180,180);
+            transform.rotation = Quaternion.Euler(180,0,0);
+            groundDir = new Vector3(0, 1, 0);
+            
         }
         else
         {
             gravityFlipped = false;
             transform.rotation = Quaternion.Euler(0,0,0);
+            groundDir = new Vector3(0, -1, 0);
         }
     }
     
@@ -122,7 +126,7 @@ public class Controler : MonoBehaviour
 
         if (gravityFlipped)
         {
-            if(rb.velocity.y > 0) rb.velocity -= Vector3.up * (Physics.gravity.y * (fallMultiply-1) * Time.fixedDeltaTime);
+            if(rb.velocity.y > 0) rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiply-1) * Time.fixedDeltaTime);
         }
         else
         {
@@ -136,7 +140,7 @@ public class Controler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
         {
             if(!GroundCheck()) return;
-            rb.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);  
+            rb.AddForce(jumpForce * -(Physics.gravity).normalized, ForceMode.Impulse);  
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -167,7 +171,7 @@ public class Controler : MonoBehaviour
     public bool GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, new Vector3(0,-1,0),out hit, groundCheckRange, jumpLayers))
+        if (Physics.Raycast(groundCheck.position, groundDir,out hit, groundCheckRange, jumpLayers))
         {
             Debug.Log("jumping");
             return true;
@@ -186,7 +190,7 @@ public class Controler : MonoBehaviour
         }
         else
         {
-            spellInstance.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            spellInstance.rotation = Quaternion.Euler(new Vector3(180, 0, 0));
         }
         
         spellInstance.AddForce(dir * launchForce, ForceMode.Impulse);

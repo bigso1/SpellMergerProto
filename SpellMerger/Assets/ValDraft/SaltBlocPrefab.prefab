@@ -141,3 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db92b0aec44d9fe43a1faf65dcf1bd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myShockwave: {fileID: 4953017650714892623, guid: 4cc41620513e07945809971e45b218f1,
+    type: 3}

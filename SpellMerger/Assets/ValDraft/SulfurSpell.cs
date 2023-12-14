@@ -38,6 +38,12 @@ public class SulfurSpell : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Salt") && !hasCombined)
+        {
+            hasCombined = true;
+            //InstanciateFX
+            
+        }
     }
 
     private void OnTriggerStay(Collider other)

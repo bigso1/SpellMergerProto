@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - UI
   - MovableItem
+  - Salt
   layers:
   - Default
   - TransparentFX
