@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987d5ef4c11cff54f8b456cf6c08d211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityFlipped: 0
   rb: {fileID: 3047869458734975588}
   groundCheck: {fileID: 3047869458065367399}
   groundCheckRange: 0.2
@@ -338,7 +339,7 @@ MonoBehaviour:
   platformsMask:
     serializedVersion: 2
     m_Bits: 8
-  jumpForce: 85
+  jumpForce: 70
   moveSpeed: 10
   launchForce: 12
   firePoint: {fileID: 3047869457748338105}
