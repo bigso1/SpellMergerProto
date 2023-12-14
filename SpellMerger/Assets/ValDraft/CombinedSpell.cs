@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class CombinedSpell : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private int windForce;
+    public bool isUp;
+    private void OnTriggerStay(Collider other)
     {
-        print("hit");
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            print("Player");
-            other.GetComponent<Rigidbody>().AddForce(0,1,0);
+            if(isUp) other.GetComponent<Rigidbody>().AddForce(0,windForce,0);
+            else other.GetComponent<Rigidbody>().AddForce(0,-windForce,0);
         }
     }
 }
