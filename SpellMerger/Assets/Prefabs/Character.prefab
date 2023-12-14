@@ -348,7 +348,8 @@ MonoBehaviour:
   sulfurLaunchable: {fileID: 8979937906473659492, guid: 8b417ebf45bf9834db64a572ccd6dbdb,
     type: 3}
   breathUnlocked: 1
-  cursorPos: {x: 0, y: 0, z: 0}
+  sulfureCd: 1
+  souffleCD: 1
 --- !u!136 &3047869458734975592
 CapsuleCollider:
   m_ObjectHideFlags: 0

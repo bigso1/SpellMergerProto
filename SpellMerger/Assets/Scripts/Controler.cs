@@ -29,27 +29,63 @@ public class Controler : MonoBehaviour
 
     public bool breathUnlocked = false;
 
-    public Vector3 cursorPos;
+
+    private bool sulfurReady = true;
+    public float sulfureCd = 1f;
+
+    private float currentSulfurCd;
+
+    private bool souffleReady = true;
+    public float souffleCD = 1f;
+
+    private float currentSouffleCD;
     // Start is called before the first frame update
     void Start()
     {
-      
+        currentSulfurCd = sulfureCd;
+        currentSouffleCD = souffleCD;
     }
 
     // Update is called once per frame
     void Update()
     {
+        SpellsCdManager();
         MovePackage();
         JumpPackage();
         if (Input.GetMouseButtonDown(0))
         {
+            sulfurReady = false;
             LaunchSpell(sulfurLaunchable);
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             if(!breathUnlocked) return;
+            souffleReady = false;
             LaunchSpell(breathLaunchable);
+        }
+    }
+
+    void SpellsCdManager()
+    {
+        if (!sulfurReady)
+        {
+            currentSulfurCd -= Time.deltaTime;
+            if (currentSulfurCd <= 0)
+            {
+                sulfurReady = true;
+                currentSulfurCd = sulfureCd;
+            }
+        }
+
+        if (!souffleReady)
+        {
+            currentSouffleCD -= Time.deltaTime;
+            if (currentSouffleCD <= 0)
+            {
+                souffleReady = true;
+                currentSouffleCD = souffleCD;
+            }
         }
     }
 

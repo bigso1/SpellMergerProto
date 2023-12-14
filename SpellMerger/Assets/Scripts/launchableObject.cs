@@ -23,12 +23,26 @@ public class launchableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Vector2 vel = GetComponent<Rigidbody>().velocity;
         if (other.CompareTag("Player")) return;
         if (other.CompareTag("Platform")) return;
         if(other.CompareTag("UI")) return;
         if (other.CompareTag(objectType.tag)) return;
-        Vector2 vel = GetComponent<Rigidbody>().velocity;
-        GameObject spell = Instantiate(objectType, new Vector3(transform.position.x, transform.position.y, 2), quaternion.identity);
+
+        if (other.gameObject.layer == 10)
+        {
+            if (Physics.gravity.y > 0)
+            {
+                if(vel.y < 0) return;
+            }
+            else
+            {
+                if (vel.y > 0) return;
+            }
+        }
+
+        GameObject spell = Instantiate(objectType, new Vector3(transform.position.x, transform.position.y, 2),
+            quaternion.identity);
         if (vel.x > 0) spell.GetComponent<SouffleSpell>().isRight = true;
         else spell.GetComponent<SouffleSpell>().isRight = false;
         spell.transform.position =

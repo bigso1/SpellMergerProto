@@ -40,6 +40,15 @@ public class SulfurSpell : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("Enemy") && !damagedEnemies.Contains(other.gameObject))
+        {
+            damagedEnemies.Add(other.gameObject);
+            other.GetComponent<EnemyBase>().TakeDamages(10);
+        }
+    }
+
     IEnumerator ResetList()
     {
         yield return new WaitForSeconds(0.5f);

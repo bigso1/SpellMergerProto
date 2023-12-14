@@ -42,5 +42,6 @@ public class SouffleSpell : MonoBehaviour
     IEnumerator LifeTime()
     {
         yield return new WaitForSeconds(lifeTime);
+        Destroy(gameObject);
     }
 }
