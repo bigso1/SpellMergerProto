@@ -924,37 +924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3047869458734975591, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: m_RenderingLayerMask
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047869458734975593, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: breathUnlocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047869458734975593, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: breathLaunchable
-      value: 
-      objectReference: {fileID: 8979937906473659492, guid: aeb0181072abd284581ea5bb7780adef,
-        type: 3}
-    - target: {fileID: 3047869458734975593, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: sulfurLaunchable
-      value: 
-      objectReference: {fileID: 8979937906473659492, guid: 8b417ebf45bf9834db64a572ccd6dbdb,
-        type: 3}
     - target: {fileID: 3047869458734975594, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
         type: 3}
       propertyPath: m_Name
       value: Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047869459053101809, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: m_TagString
-      value: UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9147b74bbdf7474db16d16ac1f3ec0f, type: 3}
