@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5193481620255894364}
   - component: {fileID: 3237234106857892704}
   - component: {fileID: 8708195775358310457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SulfurSpellPrefab
   m_TagString: Sulfur
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3237234106857892709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111,7 +111,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.1, z: 1}
+  m_Size: {x: 1, y: 1, z: 8.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3237234106857892704
 Rigidbody:
@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f74c1e769741243906c2c7b70f9c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SulfurSouffleSpell: {fileID: 0}
-  SulfurSelSpell: {fileID: 0}
+  sulfurSouffleSpell: {fileID: 3237234106857892709, guid: 42f21ff8101cde241a583103c838972c,
+    type: 3}

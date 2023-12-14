@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class CombinedSpell : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
+        print("hit");
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
+            print("Player");
             other.GetComponent<Rigidbody>().AddForce(0,1,0);
         }
     }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Sulfur
+  - Souffle
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - Player
   - IgnorePlatforms
   - InAir
-  - 
+  - Spell
   - 
   - 
   - 

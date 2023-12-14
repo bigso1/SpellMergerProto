@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SouffleSpell : MonoBehaviour
 {
+    public int windForce;
     public bool isRight;
     private void OnTriggerStay(Collider other)
     {
-        if (CompareTag("Player"))
+        
+        if (other.CompareTag("Player"))
         {
-            if (isRight) other.GetComponent<Rigidbody>().AddForce(1, 0, 0);
-            else other.GetComponent<Rigidbody>().AddForce(-1, 0, 0);
+            if (isRight) other.GetComponent<Rigidbody>().AddForce(windForce, 0, 0);
+            else other.GetComponent<Rigidbody>().AddForce(-windForce, 0, 0);
         }
     }
     
