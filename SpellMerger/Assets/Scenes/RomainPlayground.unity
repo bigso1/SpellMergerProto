@@ -499,20 +499,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 3047869458734975594, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047869459053101809, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3047869459053101809, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9147b74bbdf7474db16d16ac1f3ec0f, type: 3}
