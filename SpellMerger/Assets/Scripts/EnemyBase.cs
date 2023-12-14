@@ -27,7 +27,7 @@ public class EnemyBase : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             //GetComponent<Rigidbody>().AddForce(1000*Vector3.right, ForceMode.Impulse);
-             StartCoroutine(TakeDamages(1));
+             StartCoroutine(Damager(1));
         }
     }
 
