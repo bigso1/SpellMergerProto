@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -50,7 +51,7 @@ public class Controler : MonoBehaviour
     void Update()
     {
         SpellsCdManager();
-        MovePackage();
+        
         JumpPackage();
         if (Input.GetMouseButtonDown(0))
         {
@@ -64,6 +65,11 @@ public class Controler : MonoBehaviour
             souffleReady = false;
             LaunchSpell(breathLaunchable);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        MovePackage();
     }
 
     void SpellsCdManager()
@@ -109,17 +115,18 @@ public class Controler : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
         move = transform.right * x;
-        transform.position += move.normalized * Time.deltaTime * moveSpeed;
+        
+        rb.MovePosition(transform.position + move.normalized * (Time.fixedDeltaTime * moveSpeed));
+        
         if(x == 0 && z == 0) move = Vector3.zero;
 
-        switch (gravityFlipped)
+        if (gravityFlipped)
         {
-            case true :
-                if(rb.velocity.y > 0) rb.velocity -= Vector3.up*Physics.gravity.y*(fallMultiply-1)*Time.deltaTime;
-                break;
-            case false:
-                if(rb.velocity.y < 0) rb.velocity += Vector3.up*Physics.gravity.y*(fallMultiply-1)*Time.deltaTime;
-                break;
+            if(rb.velocity.y > 0) rb.velocity -= Vector3.up * (Physics.gravity.y * (fallMultiply-1) * Time.fixedDeltaTime);
+        }
+        else
+        {
+            if(rb.velocity.y < 0) rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiply-1) * Time.fixedDeltaTime);
         }
     }
     
