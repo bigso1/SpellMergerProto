@@ -15,7 +15,7 @@ public class CombinedSpell : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy") || other.CompareTag("MovableItem"))
         {
             other.GetComponent<Rigidbody>().AddForce(direction * other.GetComponent<Rigidbody>().mass);
         }

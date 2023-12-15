@@ -8,6 +8,9 @@ TagManager:
   - Sulfur
   - Souffle
   - Enemy
+  - UI
+  - MovableItem
+  - Salt
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - IgnorePlatforms
   - InAir
   - Spell
-  - 
-  - 
+  - NotForPlayer
+  - SpellNoPlayer
   - 
   - 
   - 

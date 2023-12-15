@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5230468354924049388}
   m_Layer: 9
   m_Name: CombinedSpellPrefab
-  m_TagString: Untagged
+  m_TagString: Salt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 13.1}
+  m_Size: {x: 1, y: 1, z: 13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3237234106857892704
 Rigidbody:
@@ -141,5 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6a9d1f40030924ba00a41d89650041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 12
-  isUp: 1
+  windForce: 5

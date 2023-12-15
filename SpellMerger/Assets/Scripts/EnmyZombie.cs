@@ -33,7 +33,5 @@ public class EnmyZombie : EnemyBase
                 if (i >= checkPointList.Count-1) i = -1;
             }
         }
-        
-        
     }
 }

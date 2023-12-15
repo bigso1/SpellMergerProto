@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -28,28 +29,69 @@ public class Controler : MonoBehaviour
     [SerializeField] private Rigidbody sulfurLaunchable;
 
     public bool breathUnlocked = false;
+    private Vector3 groundDir = new Vector3(0,-1,0);
 
-    public Vector3 cursorPos;
+    private bool sulfurReady = true;
+    public float sulfureCd = 1f;
+
+    private float currentSulfurCd;
+
+    private bool souffleReady = true;
+    public float souffleCD = 1f;
+
+    private float currentSouffleCD;
     // Start is called before the first frame update
     void Start()
     {
-      
+        currentSulfurCd = sulfureCd;
+        currentSouffleCD = souffleCD;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePackage();
+        SpellsCdManager();
+        
         JumpPackage();
         if (Input.GetMouseButtonDown(0))
         {
+            sulfurReady = false;
             LaunchSpell(sulfurLaunchable);
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             if(!breathUnlocked) return;
+            souffleReady = false;
             LaunchSpell(breathLaunchable);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        MovePackage();
+    }
+
+    void SpellsCdManager()
+    {
+        if (!sulfurReady)
+        {
+            currentSulfurCd -= Time.deltaTime;
+            if (currentSulfurCd <= 0)
+            {
+                sulfurReady = true;
+                currentSulfurCd = sulfureCd;
+            }
+        }
+
+        if (!souffleReady)
+        {
+            currentSouffleCD -= Time.deltaTime;
+            if (currentSouffleCD <= 0)
+            {
+                souffleReady = true;
+                currentSouffleCD = souffleCD;
+            }
         }
     }
 
@@ -57,13 +99,17 @@ public class Controler : MonoBehaviour
     {
         if (gravityDir)
         {
+            Debug.Log("i should flip");
             gravityFlipped = true;
-            transform.rotation = Quaternion.Euler(0,180,180);
+            transform.rotation = Quaternion.Euler(180,0,0);
+            groundDir = new Vector3(0, 1, 0);
+            
         }
         else
         {
             gravityFlipped = false;
             transform.rotation = Quaternion.Euler(0,0,0);
+            groundDir = new Vector3(0, -1, 0);
         }
     }
     
@@ -73,17 +119,18 @@ public class Controler : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
         move = transform.right * x;
-        transform.position += move.normalized * Time.deltaTime * moveSpeed;
+        
+        rb.MovePosition(transform.position + move.normalized * (Time.fixedDeltaTime * moveSpeed));
+        
         if(x == 0 && z == 0) move = Vector3.zero;
 
-        switch (gravityFlipped)
+        if (gravityFlipped)
         {
-            case true :
-                if(rb.velocity.y > 0) rb.velocity -= Vector3.up*Physics.gravity.y*(fallMultiply-1)*Time.deltaTime;
-                break;
-            case false:
-                if(rb.velocity.y < 0) rb.velocity += Vector3.up*Physics.gravity.y*(fallMultiply-1)*Time.deltaTime;
-                break;
+            if(rb.velocity.y > 0) rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiply-1) * Time.fixedDeltaTime);
+        }
+        else
+        {
+            if(rb.velocity.y < 0) rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiply-1) * Time.fixedDeltaTime);
         }
     }
     
@@ -93,7 +140,7 @@ public class Controler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
         {
             if(!GroundCheck()) return;
-            rb.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);  
+            rb.AddForce(jumpForce * -(Physics.gravity).normalized, ForceMode.Impulse);  
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -124,7 +171,7 @@ public class Controler : MonoBehaviour
     public bool GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, new Vector3(0,-1,0),out hit, groundCheckRange, jumpLayers))
+        if (Physics.Raycast(groundCheck.position, groundDir,out hit, groundCheckRange, jumpLayers))
         {
             Debug.Log("jumping");
             return true;
@@ -136,10 +183,16 @@ public class Controler : MonoBehaviour
     public void LaunchSpell(Rigidbody spell)
     {
         var dir = firePoint.GetComponent<firePointScript>().GetDirection();
-
-
-        Rigidbody spellInstance = Instantiate(spell, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-
+        Rigidbody spellInstance = Instantiate(spell, firePoint.position, quaternion.identity);
+        if (!gravityFlipped)
+        {
+            spellInstance.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else
+        {
+            spellInstance.rotation = Quaternion.Euler(new Vector3(180, 0, 0));
+        }
+        
         spellInstance.AddForce(dir * launchForce, ForceMode.Impulse);
     }
 }
