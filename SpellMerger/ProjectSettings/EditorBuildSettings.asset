@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/LDSceneMarin.unity
+    guid: 3c3e2003cb101d44a96c5adc6d450bc8
   m_configObjects: {}
