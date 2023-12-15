@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3237234106857892709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 45079112143414869}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f74c1e769741243906c2c7b70f9c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityFx: {fileID: 0}
   sulfurSouffleSpell: {fileID: 3237234106857892709, guid: 42f21ff8101cde241a583103c838972c,
     type: 3}
   groundCheck: {fileID: 45079112143414869}
