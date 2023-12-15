@@ -34,14 +34,14 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamages(int dmg)
     {
         if (!canBeDmged) return;
-        StartCoroutine(Damager(dmg));
-    }
-    public IEnumerator Damager(int dmg)
-    {
         canBeDmged = false;
         hp -= dmg;
         GetComponent<MeshRenderer>().material = feedbackMat;
         if(hp<=0) Destroy(gameObject);
+        StartCoroutine(Damager(dmg));
+    }
+    public IEnumerator Damager(int dmg)
+    {
         yield return new WaitForSeconds(.1f);
         GetComponent<MeshRenderer>().material = originMat;
         canBeDmged = true;

@@ -18,7 +18,7 @@ public class EnmyZombie : EnemyBase
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         transform.position += new Vector3((targetX - transform.position.x), 0, 0).normalized * moveSpeed * Time.deltaTime;
     }
