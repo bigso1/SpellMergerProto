@@ -6,6 +6,7 @@ using UnityEngine;
 public class UpgradeItemScript : MonoBehaviour
 {
     [SerializeField] private GameObject uiToSpawn;
+    [SerializeField] private GameObject canvasButtonObject;
 
     private bool isClaimable;
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class UpgradeItemScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             FindObjectOfType<Controler>().breathUnlocked = true;
+            canvasButtonObject.SetActive(true);
             Destroy(gameObject);
         }
     }
