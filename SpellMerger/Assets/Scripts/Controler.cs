@@ -21,7 +21,7 @@ public class Controler : MonoBehaviour
     private float z;
     private Vector3 move;
     public float moveSpeed;
-
+    private BoxCollider platformToChange;
     [Space] [Header("Spells")]
     public float launchForce = 10;
     [SerializeField] private Transform firePoint;
@@ -154,8 +154,9 @@ public class Controler : MonoBehaviour
     public bool GoDown()
     {
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, new Vector3(0,-.5f,0),out hit, groundCheckRange, platformsMask))
+        if (Physics.Raycast(groundCheck.position, groundDir,out hit, groundCheckRange, platformsMask))
         {
+            platformToChange = hit.transform.GetComponent<BoxCollider>();
             return true;
         }
         return false;
@@ -163,10 +164,9 @@ public class Controler : MonoBehaviour
 
     IEnumerator GetDown()
     {
-        CapsuleCollider caps = GetComponent<CapsuleCollider>();
-        caps.isTrigger = true;
+        platformToChange.isTrigger = true;
         yield return new WaitForSeconds(.5f);
-        caps.isTrigger = false;
+        platformToChange.isTrigger = false;
     }
     public bool GroundCheck()
     {
