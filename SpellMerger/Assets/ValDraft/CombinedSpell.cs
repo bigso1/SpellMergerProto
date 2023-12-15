@@ -34,6 +34,7 @@ public class CombinedSpell : MonoBehaviour
         if (spawn)
         {
             Transform souffle = Instantiate(toSpawn, position, quaternion.identity);
+            souffle.GetComponent<SouffleSpell>().isEnviro = true;
         }
         Destroy(gameObject);
     }

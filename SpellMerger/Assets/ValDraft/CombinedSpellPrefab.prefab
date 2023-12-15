@@ -143,6 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windForce: 4.5
   isEnviro: 0
-  toSpawn: {fileID: 0}
+  toSpawn: {fileID: 3237234106857892705, guid: 6a534d0c192f37a4c92f0fd0265b647f, type: 3}
   lifeTime: 5
   position: {x: 0, y: 0, z: 0}
