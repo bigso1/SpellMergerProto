@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class launchableObject : MonoBehaviour
 {
+    public LayerMask walls;
+    private float moduloPlace;
     public GameObject objectType;
     public float myLifeTime = 3f;
     // Start is called before the first frame update
@@ -41,7 +43,14 @@ public class launchableObject : MonoBehaviour
             }
         }
 
-        GameObject spell = Instantiate(objectType, new Vector3(transform.position.x, transform.position.y, 2),
+        RaycastHit hit;
+        Vector3 grounDir = new Vector3(0,-1,0);
+        if (Physics.gravity.y > 0) grounDir = new Vector3(0, 1, 0);
+        if (Physics.Raycast(transform.position, grounDir, out hit,1, walls ))
+        {
+            moduloPlace = hit.transform.position.y - transform.position.y;
+        }
+        GameObject spell = Instantiate(objectType, new Vector3(transform.position.x, transform.position.y-moduloPlace, 2),
             quaternion.identity);
         if (vel.x > 0) spell.GetComponent<SouffleSpell>().isRight = true;
         else spell.GetComponent<SouffleSpell>().isRight = false;

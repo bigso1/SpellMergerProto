@@ -173,10 +173,11 @@ public class Controler : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(groundCheck.position, groundDir,out hit, groundCheckRange, jumpLayers))
         {
-            Debug.Log("jumping");
-            return true;
+            if(hit.transform.gameObject.layer != 9) return true;
+            else if (hit.transform.CompareTag("Salt")) return true;
+            else return false;
         }
-        Debug.Log("not jumping");
+        
         return false;
     }
 

@@ -14,6 +14,7 @@ public class SouffleSpell : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     public float lifeTime = 5;
     public bool isEnviro;
+    private Vector3 groundDir = new Vector3(0, -1, 0);
     
 
 
@@ -40,8 +41,9 @@ public class SouffleSpell : MonoBehaviour
 
     private void Update()
     {
+        groundDir = Physics.gravity;
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, .5f, grounds))
+        if (Physics.Raycast(groundCheck.position, groundDir.normalized, out hit, .5f, grounds))
         {
             rb.useGravity = false;
         }

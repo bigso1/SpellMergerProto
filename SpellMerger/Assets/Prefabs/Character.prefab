@@ -216,7 +216,7 @@ MonoBehaviour:
   groundCheckRange: 0.2
   jumpLayers:
     serializedVersion: 2
-    m_Bits: 141
+    m_Bits: 653
   platformsMask:
     serializedVersion: 2
     m_Bits: 8

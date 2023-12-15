@@ -130,3 +130,6 @@ MonoBehaviour:
   objectType: {fileID: 3237234106857892709, guid: faa7b02f8d4d72146a26e419367bbcb6,
     type: 3}
   myLifeTime: 3
+  walls:
+    serializedVersion: 2
+    m_Bits: 0
