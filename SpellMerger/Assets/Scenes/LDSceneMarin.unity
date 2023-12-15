@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bcc0368a98da643af17999824a05ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityRef: {x: 0, y: 0, z: 0}
 --- !u!114 &146517599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,12 +391,12 @@ PrefabInstance:
     - target: {fileID: 3047869458734975589, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 106.9
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3047869458734975589, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.48
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3047869458734975589, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
         type: 3}
@@ -442,6 +443,11 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 2136551469}
+    - target: {fileID: 3047869458734975593, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
+        type: 3}
+      propertyPath: breathUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3047869458734975594, guid: d9147b74bbdf7474db16d16ac1f3ec0f,
         type: 3}
       propertyPath: m_Name
