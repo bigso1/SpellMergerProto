@@ -32,6 +32,7 @@ public class launchableObject : MonoBehaviour
         if (other.CompareTag("Platform")) return;
         if(other.CompareTag("UI")) return;
         if (other.CompareTag(objectType.tag)) return;
+        if(other.CompareTag("Patoune")) return;
 
         if (other.gameObject.layer == 10)
         {
