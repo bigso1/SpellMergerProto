@@ -141,4 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6a9d1f40030924ba00a41d89650041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 5
+  windForce: 4.5
+  isEnviro: 0
+  toSpawn: {fileID: 0}
+  lifeTime: 5
+  position: {x: 0, y: 0, z: 0}
