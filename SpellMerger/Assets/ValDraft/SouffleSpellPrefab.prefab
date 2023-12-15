@@ -167,3 +167,4 @@ MonoBehaviour:
     m_Bits: 9
   rb: {fileID: 3237234106857892704}
   lifeTime: 5
+  isEnviro: 0

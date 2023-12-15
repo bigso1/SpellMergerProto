@@ -6,7 +6,6 @@ using UnityEngine;
 public class SaltBloc : MonoBehaviour
 {
     private bool willDetonate;
-    private List<GameObject> EnemiesInRange = new List<GameObject>();
     private Vector3 startPosition = new Vector3(0, 0, 0);
     [SerializeField] private SphereCollider myShockwave;
 
