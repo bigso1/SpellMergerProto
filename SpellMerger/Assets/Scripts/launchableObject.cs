@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class launchableObject : MonoBehaviour
 {
+    [SerializeField] private GameObject souffleFx;
     public LayerMask walls;
     private float moduloPlace;
     public GameObject objectType;
@@ -14,6 +15,7 @@ public class launchableObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        souffleFx.SetActive(true);
         StartCoroutine(LifeTime());
     }
 

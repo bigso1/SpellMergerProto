@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class launchableSulfure : MonoBehaviour
 {
+    [SerializeField] private GameObject sulfurFx;
     public GameObject objectType;
     public float myLifeTime = 3f;
     public LayerMask walls;
@@ -14,6 +15,7 @@ public class launchableSulfure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sulfurFx.SetActive(true);
         StartCoroutine(LifeTime());
     }
 

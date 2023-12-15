@@ -27,6 +27,7 @@ public class Controler : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private Rigidbody breathLaunchable;
     [SerializeField] private Rigidbody sulfurLaunchable;
+    
 
     public bool breathUnlocked = false;
     private Vector3 groundDir = new Vector3(0,-1,0);
@@ -57,7 +58,7 @@ public class Controler : MonoBehaviour
         {
             if(!sulfurReady) return;
             sulfurReady = false;
-            LaunchSpell(sulfurLaunchable);
+            LaunchSpell(sulfurLaunchable, true);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -65,7 +66,7 @@ public class Controler : MonoBehaviour
             if(!breathUnlocked) return;
             if (!souffleReady) return;
             souffleReady = false;
-            LaunchSpell(breathLaunchable);
+            LaunchSpell(breathLaunchable,false);
         }
     }
 
@@ -181,7 +182,7 @@ public class Controler : MonoBehaviour
         return false;
     }
 
-    public void LaunchSpell(Rigidbody spell)
+    public void LaunchSpell(Rigidbody spell, bool sulfur)
     {
         var dir = firePoint.GetComponent<firePointScript>().GetDirection();
         Rigidbody spellInstance = Instantiate(spell, firePoint.position, quaternion.identity);

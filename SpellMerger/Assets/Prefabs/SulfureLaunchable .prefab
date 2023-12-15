@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 1.4, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3963070379818384721}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,9 +128,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a4ba5c36b3fd147a7a0ad5b8968c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sulfurFx: {fileID: 3963070379818384724}
   objectType: {fileID: 3237234106857892709, guid: faa7b02f8d4d72146a26e419367bbcb6,
     type: 3}
   myLifeTime: 3
   walls:
     serializedVersion: 2
     m_Bits: 0
+--- !u!1001 &1738753687161019265
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3605160350569049258}
+    m_Modifications:
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829013, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: m_Name
+      value: SulphurCast
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377397111154829015, guid: 48a8162f830f8634999777f25687ea57,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48a8162f830f8634999777f25687ea57, type: 3}
+--- !u!4 &3963070379818384721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3377397111154829008, guid: 48a8162f830f8634999777f25687ea57,
+    type: 3}
+  m_PrefabInstance: {fileID: 1738753687161019265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3963070379818384724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3377397111154829013, guid: 48a8162f830f8634999777f25687ea57,
+    type: 3}
+  m_PrefabInstance: {fileID: 1738753687161019265}
+  m_PrefabAsset: {fileID: 0}
