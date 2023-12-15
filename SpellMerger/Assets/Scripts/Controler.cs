@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Controler : MonoBehaviour
 {
@@ -40,6 +42,10 @@ public class Controler : MonoBehaviour
     public float souffleCD = 1f;
 
     private float currentSouffleCD=1;
+
+    private int score;
+
+    public TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -195,5 +201,16 @@ public class Controler : MonoBehaviour
         }
         
         spellInstance.AddForce(dir * launchForce, ForceMode.Impulse);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Patoune"))
+        {
+            print(other.gameObject);
+            Destroy(other.gameObject);
+            score++;
+            scoreText.text = score.ToString();
+        }
     }
 }
