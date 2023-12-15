@@ -13,11 +13,13 @@ public class SouffleSpell : MonoBehaviour
     public LayerMask grounds;
     [SerializeField] private Rigidbody rb;
     public float lifeTime = 5;
+    public bool isEnviro;
+    
 
 
     private void Start()
     {
-        StartCoroutine(LifeTime());
+        if(!isEnviro) StartCoroutine(LifeTime());
     }
 
     private void OnTriggerStay(Collider other)
@@ -28,6 +30,12 @@ public class SouffleSpell : MonoBehaviour
             if (isRight) other.GetComponent<Rigidbody>().AddForce(windForce*other.GetComponent<Rigidbody>().mass, 0, 0);
             else other.GetComponent<Rigidbody>().AddForce(-windForce*other.GetComponent<Rigidbody>().mass, 0, 0);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!other.CompareTag("Sulfur")) return;
+        Destroy(gameObject);
     }
 
     private void Update()

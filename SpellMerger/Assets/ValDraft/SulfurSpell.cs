@@ -31,19 +31,29 @@ public class SulfurSpell : MonoBehaviour
             damagedEnemies.Add(other.gameObject);
             other.GetComponent<EnemyBase>().TakeDamages(10);
         }
-        else if (other.gameObject.CompareTag("Souffle") && !hasCombined)
+        else if (other.CompareTag("Souffle") && !hasCombined)
         {
+            bool isEnviro = other.GetComponent<SouffleSpell>().isEnviro;
             hasCombined = true;
-            Instantiate(sulfurSouffleSpell, transform.position + (other.transform.position - transform.position) / 2, quaternion.identity);
-            Destroy(other.gameObject);
+            
+            GameObject combined = Instantiate(sulfurSouffleSpell, transform.position + (other.transform.position - transform.position) / 2, quaternion.identity);
+            combined.GetComponent<CombinedSpell>().isEnviro = isEnviro;
+            combined.GetComponent<CombinedSpell>().position = other.transform.position;
             Destroy(gameObject);
+            //sStartCoroutine(SelfArm(other.gameObject));
         }
         else if (other.gameObject.CompareTag("Salt") && !hasCombined)
         {
             hasCombined = true;
             //InstanciateFX
-            
         }
+    }
+
+    IEnumerator SelfArm(GameObject other)
+    {
+        yield return new WaitForSeconds(.1f);
+        Destroy(other.gameObject);
+        Destroy(gameObject);
     }
 
     private void OnTriggerStay(Collider other)
