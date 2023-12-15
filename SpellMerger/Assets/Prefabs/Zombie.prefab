@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originMat: {fileID: 2100000, guid: 8293c52f6ce869e45abcf9927f7386dd, type: 2}
   feedbackMat: {fileID: 2100000, guid: c1205742be7481b4c8e059a00b127282, type: 2}
-  maxHp: 100
+  maxHp: 2
   hp: 1
   checkPointList:
   - {fileID: 0}
