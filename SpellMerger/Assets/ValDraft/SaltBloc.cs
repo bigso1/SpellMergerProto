@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SaltBloc : MonoBehaviour
 {
+    [SerializeField] private GameObject willDetonateFx;
+    [SerializeField] private GameObject gravityFx;
     private bool willDetonate;
     private Vector3 startPosition = new Vector3(0, 0, 0);
     [SerializeField] private SphereCollider myShockwave;
@@ -80,10 +82,12 @@ public class SaltBloc : MonoBehaviour
     IEnumerator Detonation()
     {
         print("Kaboom");
+        willDetonateFx.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SphereCollider shock = Instantiate(myShockwave, transform.position, Quaternion.identity);
 
         willDetonate = false;
+        willDetonateFx.SetActive(true);
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
@@ -98,6 +102,7 @@ public class SaltBloc : MonoBehaviour
 
     IEnumerator Consumed()
     {
+        gravityFx.SetActive(true);
         print("resetblock");
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
@@ -105,6 +110,7 @@ public class SaltBloc : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
+        gravityFx.SetActive(false);
         transform.position = startPosition;
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;

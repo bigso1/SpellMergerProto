@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class SulfurSpell : MonoBehaviour
 {
+    [SerializeField] private GameObject gravityFx;
     public GameObject sulfurSouffleSpell;
     private bool hasCombined;
     private List<GameObject> damagedEnemies = new List<GameObject>();
@@ -45,7 +46,7 @@ public class SulfurSpell : MonoBehaviour
         else if (other.gameObject.CompareTag("Salt") && !hasCombined)
         {
             hasCombined = true;
-            //InstanciateFX
+            gravityFx.SetActive(true);
         }
     }
 
