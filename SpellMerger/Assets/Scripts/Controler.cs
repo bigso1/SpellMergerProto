@@ -21,7 +21,7 @@ public class Controler : MonoBehaviour
     private float z;
     private Vector3 move;
     public float moveSpeed;
-
+    private BoxCollider platformToChange;
     [Space] [Header("Spells")]
     public float launchForce = 10;
     [SerializeField] private Transform firePoint;
@@ -31,15 +31,15 @@ public class Controler : MonoBehaviour
     public bool breathUnlocked = false;
     private Vector3 groundDir = new Vector3(0,-1,0);
 
-    private bool sulfurReady = true;
+    private bool sulfurReady;
     public float sulfureCd = 1f;
 
-    private float currentSulfurCd;
+    private float currentSulfurCd=1;
 
-    private bool souffleReady = true;
+    private bool souffleReady;
     public float souffleCD = 1f;
 
-    private float currentSouffleCD;
+    private float currentSouffleCD=1;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +55,7 @@ public class Controler : MonoBehaviour
         JumpPackage();
         if (Input.GetMouseButtonDown(0))
         {
+            if(!sulfurReady) return;
             sulfurReady = false;
             LaunchSpell(sulfurLaunchable);
         }
@@ -62,6 +63,7 @@ public class Controler : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if(!breathUnlocked) return;
+            if (!souffleReady) return;
             souffleReady = false;
             LaunchSpell(breathLaunchable);
         }
@@ -84,14 +86,12 @@ public class Controler : MonoBehaviour
             }
         }
 
-        if (!souffleReady)
+        if (souffleReady) return;
+        currentSouffleCD -= Time.deltaTime;
+        if (currentSouffleCD <= 0)
         {
-            currentSouffleCD -= Time.deltaTime;
-            if (currentSouffleCD <= 0)
-            {
-                souffleReady = true;
-                currentSouffleCD = souffleCD;
-            }
+            souffleReady = true;
+            currentSouffleCD = souffleCD;
         }
     }
 
@@ -154,8 +154,9 @@ public class Controler : MonoBehaviour
     public bool GoDown()
     {
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, new Vector3(0,-.5f,0),out hit, groundCheckRange, platformsMask))
+        if (Physics.Raycast(groundCheck.position, groundDir,out hit, groundCheckRange, platformsMask))
         {
+            platformToChange = hit.transform.GetComponent<BoxCollider>();
             return true;
         }
         return false;
@@ -163,20 +164,20 @@ public class Controler : MonoBehaviour
 
     IEnumerator GetDown()
     {
-        CapsuleCollider caps = GetComponent<CapsuleCollider>();
-        caps.isTrigger = true;
+        platformToChange.isTrigger = true;
         yield return new WaitForSeconds(.5f);
-        caps.isTrigger = false;
+        platformToChange.isTrigger = false;
     }
     public bool GroundCheck()
     {
         RaycastHit hit;
         if (Physics.Raycast(groundCheck.position, groundDir,out hit, groundCheckRange, jumpLayers))
         {
-            Debug.Log("jumping");
-            return true;
+            if(hit.transform.gameObject.layer != 9) return true;
+            else if (hit.transform.CompareTag("Salt")) return true;
+            else return false;
         }
-        Debug.Log("not jumping");
+        
         return false;
     }
 

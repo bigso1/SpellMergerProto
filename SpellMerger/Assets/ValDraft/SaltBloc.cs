@@ -28,15 +28,19 @@ public class SaltBloc : MonoBehaviour
         }
         else if (!willDetonate && other.CompareTag("Souffle"))
         {
+            print("quoicoubeh");
+            
             Destroy(other.gameObject);
             StartCoroutine(Consumed());
             if (Physics.gravity.y > 0)
             {
+                print("Ruef");
                 Physics.gravity = new Vector3(0, -9.81f, 0);
                 FindObjectOfType<Controler>().GravityManager(false);
             }
             else
             {
+                print("Feur");
                 Physics.gravity = new Vector3(0, 9.81f, 0);
                 FindObjectOfType<Controler>().GravityManager(true);
             }
@@ -75,6 +79,7 @@ public class SaltBloc : MonoBehaviour
 
     IEnumerator Detonation()
     {
+        print("Kaboom");
         yield return new WaitForSeconds(1.5f);
         SphereCollider shock = Instantiate(myShockwave, transform.position, Quaternion.identity);
 
@@ -93,6 +98,7 @@ public class SaltBloc : MonoBehaviour
 
     IEnumerator Consumed()
     {
+        print("resetblock");
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;

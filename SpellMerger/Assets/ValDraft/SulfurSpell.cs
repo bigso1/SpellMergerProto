@@ -10,7 +10,7 @@ public class SulfurSpell : MonoBehaviour
     public GameObject sulfurSouffleSpell;
     private bool hasCombined;
     private List<GameObject> damagedEnemies = new List<GameObject>();
-    
+    private Vector3 groundDir = new Vector3(0, -1, 0);
     [SerializeField] private Transform groundCheck;
     public LayerMask grounds;
     [SerializeField] private Rigidbody rb;
@@ -73,8 +73,10 @@ public class SulfurSpell : MonoBehaviour
     }
     private void Update()
     {
+        if (Physics.gravity.y > 0) groundDir.y = 1;
+        else groundDir.y = -1;
         RaycastHit hit;
-        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, .6f, grounds))
+        if (Physics.Raycast(groundCheck.position, groundDir, out hit, .6f, grounds))
         {
             rb.useGravity = false;
         }
@@ -82,5 +84,6 @@ public class SulfurSpell : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if(lifeTime<=0) Destroy(gameObject);
     }
+    
     
 }

@@ -9,8 +9,8 @@ public class launchableSulfure : MonoBehaviour
 {
     public GameObject objectType;
     public float myLifeTime = 3f;
-
-    private float moduloDir = 0f;
+    public LayerMask walls;
+    private float moduloPlace = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +43,15 @@ public class launchableSulfure : MonoBehaviour
                 if (vel.y > 0) return;
             }
         }
-
+        
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, .2f, 0))
+        Vector3 grounDir = new Vector3(0,-1,0);
+        if (Physics.gravity.y > 0) grounDir = new Vector3(0, 1, 0);
+        if (Physics.Raycast(transform.position, grounDir, out hit,1, walls ))
         {
-            moduloDir = -.5f;
+            moduloPlace = hit.transform.position.y - transform.position.y;
         }
-        else if(Physics.Raycast(transform.position, -Vector3.right, out hit, .2f, 0))
-        {
-            moduloDir = .5f;
-        }
-        GameObject spell = Instantiate(objectType, new Vector3(transform.position.x+moduloDir, transform.position.y, 2), quaternion.identity);
+        GameObject spell = Instantiate(objectType, new Vector3(transform.position.x, transform.position.y-moduloPlace, 2), quaternion.identity);
         spell.transform.position =
             new Vector3(transform.position.x, transform.position.y + spell.transform.localScale.y / 2, 2);
         Debug.Log(other.name);
