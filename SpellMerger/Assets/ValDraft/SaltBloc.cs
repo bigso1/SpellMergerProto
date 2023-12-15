@@ -87,7 +87,7 @@ public class SaltBloc : MonoBehaviour
         SphereCollider shock = Instantiate(myShockwave, transform.position, Quaternion.identity);
 
         willDetonate = false;
-        willDetonateFx.SetActive(true);
+        willDetonateFx.SetActive(false);
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
