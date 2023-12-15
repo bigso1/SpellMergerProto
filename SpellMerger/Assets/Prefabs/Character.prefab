@@ -231,6 +231,7 @@ MonoBehaviour:
   breathUnlocked: 1
   sulfureCd: 1
   souffleCD: 1
+  scoreText: {fileID: 0}
 --- !u!136 &3047869458734975592
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ GameObject:
   - component: {fileID: 3047869459053101808}
   - component: {fileID: 3047869459053101806}
   - component: {fileID: 3047869459053101807}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: UpperPlatformCheck
   m_TagString: UI
   m_Icon: {fileID: 0}
@@ -318,5 +319,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7448804, z: 1}
+  m_Size: {x: 1, y: 1.7, z: 1}
   m_Center: {x: 0, y: -0.07244027, z: 0}
