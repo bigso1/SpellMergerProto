@@ -84,7 +84,7 @@ public class SaltBloc : MonoBehaviour
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         transform.position = startPosition;
         GetComponent<MeshRenderer>().enabled = true;
@@ -98,7 +98,7 @@ public class SaltBloc : MonoBehaviour
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         transform.position = startPosition;
         GetComponent<MeshRenderer>().enabled = true;
